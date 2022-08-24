@@ -1,0 +1,10 @@
+#button-edit {
+    margin-right: 5px;
+    border: none;
+}
+
+#button-delete {
+    margin-right: 5px;
+    border: none;
+    color: rgb(189, 21, 21);
+}

@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { ListGroup, Card, Button, Form } from "react-bootstrap";
 import API from "./API";
+import "./buttons.css";
+import {
+  EditOutlined,
+  DeleteOutlined
+} from '@ant-design/icons';
 
 const AddMovie = ({ onAdd }) => {
   const [name, setName] = useState("");
@@ -32,7 +37,7 @@ const AddMovie = ({ onAdd }) => {
   };
 
   const onUpdate = (id) => {
-    let item = { name };
+    let item = { name, genre, starring };
     API.patch(`/${id}/`, item).then((res) => refreshMovies());
   };
 
@@ -125,20 +130,16 @@ const AddMovie = ({ onAdd }) => {
                     <td>{movie.starring}</td>
                     <td>
                       <button
-                        className="fa fa-pencil-square text-primary d-inline"
                         id="button-edit"
-                        aria-hidden="true"
                         onClick={() => selectMovie(movie.id)}
                       >
-                        ✏️
+                        <EditOutlined />
                       </button>
                       <button
-                        className="fa fa-trash-o text-danger d-inline mx-3"
                         id="button-delete"
-                        aria-hidden="true"
                         onClick={() => onDelete(movie.id)}
                       >
-                        ❌
+                        <DeleteOutlined />
                       </button>
                     </td>
                   </tr>
